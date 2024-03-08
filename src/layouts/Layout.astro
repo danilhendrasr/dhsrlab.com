@@ -18,16 +18,22 @@ const { title } = Astro.props;
   </head>
   <body>
     <nav
-      class="fixed left-1/2 top-5 -translate-x-1/2 border py-2 px-5 border-[#ddddda] rounded-3xl bg-[#fdfdfc] hover:border-slate-500 transition-all hover:shadow-sm backdrop-filter backdrop-blur-lg bg-opacity-30"
+      class="fixed left-1/2 top-5 -translate-x-1/2 border py-2 px-5 border-[#ddddda] rounded-3xl bg-[#fdfdfc] hover:border-slate-500 transition-all hover:shadow-sm backdrop-filter backdrop-blur-lg bg-opacity-50 z-50"
     >
       <ul class="flex gap-2 items-center text-sm">
-        <li class="hover:bg-gray-200 p-1 px-4 rounded-3xl transition-colors">
+        <li
+          class="hover:bg-slate-200 p-1 px-4 rounded-3xl transition-colors duration-300"
+        >
           <a href="/">Home</a>
         </li>
-        <li class="hover:bg-gray-200 p-1 px-4 rounded-3xl transition-colors">
+        <li
+          class="hover:bg-slate-200 p-1 px-4 rounded-3xl transition-colors duration-300"
+        >
           <a href="/about">About</a>
         </li>
-        <li class="hover:bg-gray-200 p-1 px-4 rounded-3xl transition-colors">
+        <li
+          class="hover:bg-slate-200 p-1 px-4 rounded-3xl transition-colors duration-300"
+        >
           <a href="/blog">Blog</a>
         </li>
       </ul>
