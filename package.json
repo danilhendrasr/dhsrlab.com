@@ -13,6 +13,8 @@
     "@astrojs/check": "^0.5.6",
     "@astrojs/markdoc": "^0.9.1",
     "@astrojs/react": "^3.0.10",
+    "@keystatic/astro": "^5.0.0",
+    "@keystatic/core": "^0.5.2",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "astro": "^4.4.15",
