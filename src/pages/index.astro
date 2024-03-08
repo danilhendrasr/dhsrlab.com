@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ClickableLink from "../components/ClickableLink.astro";
 ---
 
 <Layout title="Danil Hendra Suryawan">
@@ -7,30 +8,30 @@ import Layout from "../layouts/Layout.astro";
     <section class="h-screen w-screen relative">
       <div class="absolute top-1/2 left-32 -translate-y-1/2 leading-7">
         <h1 class="text-5xl font-bold">Danil Hendra Suryawan</h1>
-        <p class="text-lg font-light text-[#425466] my-2">
-          Software engineer doing full-stack stuff.
+        <p class="font-light my-2">
+          Full-stack engineer at
+          <ClickableLink link="https://selarastech.com">
+            Selarastech
+          </ClickableLink>
         </p>
 
         <p class="font-light my-5 text-[#425466]">
-          Currently a full-stack engineer at
-          <a
-            target="_blank"
-            class="text-[#635bff] hover:underline"
-            href="https://selarastech.com"
-          >
-            Selarastech.
-          </a>
+          I work with end-to-end web technologies and stuff. Creating and
           <br />
-          Previously a computer science student at
-          <a
-            target="_blank"
-            class="text-[#635bff] hover:underline"
-            href="https://upnjatim.ac.id"
-          >
-            UPN Jawa Timur.
-          </a>
+          solving problems using React, TypeScript, Go, and MySQL.
         </p>
 
+        <p class="font-light text-[#425466] mb-2">
+          View my
+          <ClickableLink
+            link="https://docs.google.com/document/d/1zmPBRiLGmQnJuW0bGpEuAWashMNqsvDHWClJsosU4dw/edit"
+          >
+            resume,
+          </ClickableLink>
+          <ClickableLink link="mailto:hello@dhsrlab.com">
+            email me,
+          </ClickableLink> or find me online:
+        </p>
         <div class="flex gap-1">
           <a
             target="_blank"

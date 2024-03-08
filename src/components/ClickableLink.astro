@@ -1,0 +1,19 @@
+---
+import type React from "react";
+
+interface Props {
+  link: string;
+  openInNewTab?: boolean;
+  children: React.ReactNode;
+}
+
+const { link, openInNewTab = false } = Astro.props;
+---
+
+<a
+  href={link}
+  target={openInNewTab ? "_blank" : undefined}
+  class="text-[#635bff] hover:underline"
+>
+  <slot />
+</a>
