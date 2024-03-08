@@ -1,0 +1,41 @@
+---
+const url = Astro.url;
+
+const menus = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "About",
+    url: "/about",
+  },
+  {
+    name: "Blog",
+    url: "/blog",
+  },
+];
+---
+
+<nav
+  class="fixed left-1/2 top-5 -translate-x-1/2 border py-2 px-5 border-[#ddddda] rounded-3xl bg-[#fdfdfc] hover:border-slate-500 transition-all hover:shadow-sm backdrop-filter backdrop-blur-lg bg-opacity-50 z-50"
+>
+  <ul class="flex gap-2 items-center text-sm">
+    {
+      menus.map((menuItem) => {
+        let classes =
+          "hover:bg-[#635bff] hover:text-white p-1 px-4 rounded-3xl transition-colors duration-300";
+
+        if (url.pathname === menuItem.url) {
+          classes += " bg-[#635bff] text-white";
+        }
+
+        return (
+          <li class={classes}>
+            <a href={menuItem.url}>{menuItem.name}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
