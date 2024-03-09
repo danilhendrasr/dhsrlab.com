@@ -1,6 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ClickableLink from "../components/ClickableLink.astro";
+import ToolboxItem from "../components/ToolboxItem";
+
+const tools = [
+  [
+    { image: "/typescript.svg", name: "TypeScript" },
+    { image: "/go.svg", name: "Go" },
+    { image: "/rust.svg", name: "Rust" },
+  ],
+];
 ---
 
 <Layout title="Danil Hendra Suryawan">
@@ -66,30 +75,72 @@ import ClickableLink from "../components/ClickableLink.astro";
 
       <div class="absolute top-1/2 right-60 -translate-y-1/2 h-fit">
         <figure class="flex items-center flex-col">
-          <img src="/bw-portrait.png" class="w-[350px]" />
+          <img src="/bw-portrait.webp" class="w-[350px]" />
           <figcaption class="font-extralight my-2 text-xs">
             Pardon the weird mix of outer clothes :p
           </figcaption>
         </figure>
       </div>
 
-      <a
-        class="absolute left-1/2 -translate-x-1/2 bottom-5 flex items-center flex-col group"
-        href="#about"
+      <div
+        class="absolute left-1/2 -translate-x-1/2 bottom-5 flex items-center flex-col group cursor-pointer"
+        id="hero-bottom-arrow"
       >
         <span
           class="text-[#425466] text-sm mb-0 group-hover:mb-2 group-hover:opacity-100 opacity-0 transition-all duration-300"
         >
-          Next section
+          See more
         </span>
         <img
           src="/bottom-arrow.svg"
           class="w-7 transition-all origin-bottom rotate-2 animate-bounce opacity-60 group-hover:opacity-100 duration-300"
-          id="hero-bottom-arrow"
         />
-      </a>
+      </div>
+    </section>
+    <section class="h-screen relative">
+      <div
+        class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col items-center"
+      >
+        <h2 id="about" class="text-3xl font-bold my-5">Toolbox</h2>
+
+        <ul class="flex flex-col gap-3">
+          {
+            tools.map((row) => {
+              return (
+                <div class="flex gap-3">
+                  {row.map((item) => {
+                    return (
+                      <li>
+                        <ToolboxItem
+                          client:load
+                          image={item.image}
+                          name={item.name}
+                          url="https://dhsrlab.com"
+                        />
+                      </li>
+                    );
+                  })}
+                </div>
+              );
+            })
+          }
+        </ul>
+      </div>
     </section>
   </main>
+
+  <script></script>
 </Layout>
 
-<script></script>
+<script>
+  const heroBottomArrow = document.getElementById("hero-bottom-arrow");
+  heroBottomArrow?.addEventListener("click", () => {
+    window.scrollTo({
+      behavior: "smooth",
+      top:
+        document.getElementById("about")!.getBoundingClientRect().top +
+        window.scrollY -
+        100,
+    });
+  });
+</script>
