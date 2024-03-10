@@ -68,7 +68,7 @@ const ToolboxItem: React.FC<Props> = (props) => {
         style={{ opacity: mouseHovering && props.inProgress ? 1 : 0 }}
       >
         <span className="text-lg text-center">🚧</span>
-        <span className="text-xs text-center">Coming soon...</span>
+        <span className="text-xs text-center">Acquiring...</span>
       </div>
     </a>
   );
