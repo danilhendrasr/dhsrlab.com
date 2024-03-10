@@ -28,9 +28,14 @@ const ToolboxItem: React.FC<Props> = (props) => {
   return (
     <a
       ref={itemRef}
-      className="block border border-[#ddddda] w-28 h-28 rounded-md transition-all relative overflow-hidden hover:shadow-md"
+      className="block border border-[#ddddda] w-28 h-28 rounded-md transition-all relative overflow-hidden"
       style={{
         opacity,
+        boxShadow:
+          mouseHovering && !props.inProgress
+            ? "rgba(149, 157, 165, 0.2) 0px 8px 24px"
+            : undefined,
+        cursor: props.inProgress ? "progress" : "pointer",
         borderColor: props.main ? "#425466" : "#ddddda",
       }}
       onClick={(e) => {
