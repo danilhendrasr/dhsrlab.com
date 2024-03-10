@@ -3,11 +3,34 @@ import Layout from "../layouts/Layout.astro";
 import ClickableLink from "../components/ClickableLink.astro";
 import ToolboxItem from "../components/ToolboxItem";
 
-const tools = [
+type Tool = {
+  image: string;
+  name: string;
+  url?: string;
+  inProgress?: boolean;
+  main?: boolean;
+};
+
+const tools: Tool[][] = [
   [
-    { image: "/typescript.svg", name: "TypeScript" },
-    { image: "/go.svg", name: "Go" },
+    { image: "/typescript.svg", name: "TypeScript", main: true },
     { image: "/rust.svg", name: "Rust" },
+    { image: "/go.svg", name: "Go", main: true },
+    { image: "/php.svg", name: "PHP" },
+  ],
+  [
+    { image: "/nodejs.svg", name: "Node.js" },
+    { image: "/react.svg", name: "React", main: true },
+    { image: "/react.svg", name: "React Native" },
+  ],
+  [
+    { image: "/postgresql.svg", name: "PostgreSQL" },
+    { image: "/mysql.svg", name: "MySQL", main: true },
+  ],
+  [
+    { image: "/docker.svg", name: "Docker", main: true },
+    { image: "/k8s.svg", name: "Kubernetes", inProgress: true },
+    { image: "/aws.svg", name: "AWS" },
   ],
 ];
 ---
@@ -107,7 +130,7 @@ const tools = [
           {
             tools.map((row) => {
               return (
-                <div class="flex gap-3">
+                <div class="flex justify-center gap-3">
                   {row.map((item) => {
                     return (
                       <li>
@@ -116,6 +139,8 @@ const tools = [
                           image={item.image}
                           name={item.name}
                           url="https://dhsrlab.com"
+                          inProgress={item.inProgress}
+                          main={item.main}
                         />
                       </li>
                     );
