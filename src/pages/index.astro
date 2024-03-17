@@ -3,6 +3,61 @@ import Layout from "../layouts/Layout.astro";
 import ClickableLink from "../components/ClickableLink.astro";
 import ToolboxItem from "../components/ToolboxItem";
 
+interface BlogPost {
+  url: string;
+  title: string;
+  subtitle: string;
+  coverImage: {
+    url: string;
+  };
+  readTimeInMinutes: number;
+  views: number;
+}
+
+interface BlogPostResponse {
+  publication: {
+    posts: {
+      edges: {
+        node: BlogPost;
+      }[];
+    };
+  };
+}
+
+const response = await fetch("https://gql.hashnode.com", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    query: `
+      query {
+        publication(host: "indentasi.dhsrlab.com") {
+          posts(first: 5) {
+            edges {
+              node {
+                url
+                title
+                subtitle
+                coverImage {
+                  url
+                }
+                readTimeInMinutes
+                views
+              }
+            }
+          }
+        }
+      }`,
+  }),
+});
+
+const postsResponse: { data: BlogPostResponse } = await response.json();
+
+const posts = postsResponse.data.publication.posts.edges.map(
+  (edge) => edge.node
+);
+
 type Tool = {
   image: string;
   name: string;
@@ -120,6 +175,7 @@ const tools: Tool[][] = [
         />
       </div>
     </section>
+
     <section class="h-screen relative">
       <div
         class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col items-center"
@@ -152,9 +208,53 @@ const tools: Tool[][] = [
         </ul>
       </div>
     </section>
-  </main>
 
-  <script></script>
+    <section class="relative flex flex-col justify-center items-center my-20">
+      <h2 id="about" class="text-3xl font-bold my-5 mb-12">Latest Writings</h2>
+
+      <div class="max-w-[720px] flex flex-col">
+        <ul class="flex flex-col gap-3">
+          {
+            posts.map((post) => {
+              return (
+                <div class="flex justify-center gap-3">
+                  <img
+                    src={post.coverImage.url}
+                    alt=""
+                    class="rounded-md w-56"
+                  />
+                  <div class="flex flex-col gap-3">
+                    <a href={post.url}>
+                      <p class="text-xl font-bold">{post.title}</p>
+                    </a>
+                    <span class="text-[#425466]">{post.subtitle}</span>
+                    <div class="text-slate-500 text-xs flex items-center gap-1">
+                      <div class="inline-flex justify-center items-center gap-1">
+                        <img src="book.svg" alt="" class="w-3 inline" />
+                        <span>{post.readTimeInMinutes} minutes</span>
+                      </div>
+                      |
+                      <div class="inline-flex justify-center items-center gap-1">
+                        <img src="eye.svg" alt="" class="w-3 inline" />
+                        <span>{post.views} views</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          }
+        </ul>
+
+        <a
+          href="https://indentasi.dhsrlab.com"
+          class="text-sm w-1/3 py-3 px-10 mt-10 mx-auto backdrop-blur-lg rounded-lg text-center border border-[#ddddda] hover:border-slate-500 hover:shadow-md transition-all duration-300 cursor-alias"
+        >
+          View all writings &rarr;
+        </a>
+      </div>
+    </section>
+  </main>
 </Layout>
 
 <script>
