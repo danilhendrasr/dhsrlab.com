@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ClickableLink from "../components/ClickableLink.astro";
 import ToolboxItem from "../components/ToolboxItem";
+import WritingItem from "../components/WritingItem.astro";
 
 interface BlogPost {
   url: string;
@@ -217,30 +218,14 @@ const tools: Tool[][] = [
           {
             posts.map((post) => {
               return (
-                <div class="flex justify-center gap-3">
-                  <img
-                    src={post.coverImage.url}
-                    alt=""
-                    class="rounded-md w-56"
-                  />
-                  <div class="flex flex-col gap-3">
-                    <a href={post.url}>
-                      <p class="text-xl font-bold">{post.title}</p>
-                    </a>
-                    <span class="text-[#425466]">{post.subtitle}</span>
-                    <div class="text-slate-500 text-xs flex items-center gap-1">
-                      <div class="inline-flex justify-center items-center gap-1">
-                        <img src="book.svg" alt="" class="w-3 inline" />
-                        <span>{post.readTimeInMinutes} minutes</span>
-                      </div>
-                      |
-                      <div class="inline-flex justify-center items-center gap-1">
-                        <img src="eye.svg" alt="" class="w-3 inline" />
-                        <span>{post.views} views</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <WritingItem
+                  coverUrl={post.coverImage.url}
+                  url={post.url}
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  readTimeInMinutes={post.readTimeInMinutes}
+                  views={post.views}
+                />
               );
             })
           }

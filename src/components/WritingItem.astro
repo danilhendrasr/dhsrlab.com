@@ -1,0 +1,50 @@
+---
+interface Props {
+  coverUrl: string;
+  url: string;
+  title: string;
+  subtitle: string;
+  readTimeInMinutes: number;
+  views: number;
+}
+
+const props = Astro.props;
+---
+
+<div
+  class="item flex justify-center gap-3 relative border border-slate-400 py-5 px-7 rounded-lg hover:shadow-md transition-all"
+>
+  <img src={props.coverUrl} alt="" class="rounded-md w-56" />
+  <div class="flex flex-col gap-3">
+    <a href={props.url} class="hover:text-[#635bff]">
+      <p class="text-xl font-bold">{props.title}</p>
+    </a>
+    <span class="text-[#425466]">{props.subtitle}</span>
+    <div class="text-slate-500 text-xs flex items-center gap-1">
+      <div class="inline-flex justify-center items-center gap-1">
+        <img src="book.svg" alt="" class="w-3 inline" />
+        <span>{props.readTimeInMinutes} minutes</span>
+      </div>
+      |
+      <div class="inline-flex justify-center items-center gap-1">
+        <img src="eye.svg" alt="" class="w-3 inline" />
+        <span>{props.views} views</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .item::after {
+    content: "";
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    bottom: 0;
+    transition: all 300ms;
+    z-index: -99;
+    opacity: 0.5;
+  }
+</style>
