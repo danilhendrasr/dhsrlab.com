@@ -13,7 +13,7 @@ const { link, openInNewTab = false } = Astro.props;
 <a
   href={link}
   target={openInNewTab ? "_blank" : undefined}
-  class="text-[#635bff] w-fit relative"
+  class="text-[#635bff] hover:text-[#635bff] w-fit relative"
 >
   <slot />
 </a>

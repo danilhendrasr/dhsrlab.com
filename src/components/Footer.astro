@@ -1,7 +1,22 @@
 ---
-
+import ClickableLink from "../components/ClickableLink.astro";
 ---
 
-<footer class="w-screen flex justify-center items-center py-4">
-  <div>Built with 🔥 by Danil</div>
+<footer
+  class="w-screen flex justify-between items-center py-8 border-t border-t-slate-300 text-sm max-w-[1200px] mx-auto px-10 text-slate-600"
+>
+  <ul class="flex gap-5">
+    <li>
+      <ClickableLink link="/">Home</ClickableLink>
+    </li>
+    <li>
+      <ClickableLink link="/about">About</ClickableLink>
+    </li>
+    <li>
+      <ClickableLink link="https://indentasi.dhsrlab.com" openInNewTab>
+        Blog
+      </ClickableLink>
+    </li>
+  </ul>
+  <div>&copy; 2024 Danil Hendra Suryawan.</div>
 </footer>
