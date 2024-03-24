@@ -28,7 +28,7 @@ const ToolboxItem: React.FC<Props> = (props) => {
   return (
     <a
       ref={itemRef}
-      className="block border border-[#ddddda] w-28 h-28 rounded-md transition-all relative overflow-hidden"
+      className="block border border-[#ddddda] w-20 h-20 md:w-28 md:h-28 rounded-md transition-all relative overflow-hidden text-xs md:text-base"
       style={{
         opacity,
         boxShadow:
@@ -57,7 +57,7 @@ const ToolboxItem: React.FC<Props> = (props) => {
         <div className="w-8 h-10 flex justify-center items-center">
           <img src={props.image} className="w-full invert" />
         </div>
-        <span className="text-sm">{props.name}</span>
+        <span>{props.name}</span>
       </div>
       <div
         className="rounded-full w-16 h-16 bg-gray-400 -z-10 absolute transition-opacity duration-500 -translate-x-1/2 -translate-y-1/2"
