@@ -1,12 +1,16 @@
 ---
-const url = Astro.url;
+const { pathname } = Astro.url;
+
+const activePage = pathname === "/" ? "home" : pathname.replace("/", "");
 
 const menus = [
   {
+    key: "home",
     name: "Home",
     url: "/",
   },
   {
+    key: "about",
     name: "About",
     url: "/about",
   },
@@ -26,7 +30,7 @@ const menus = [
         let classes =
           "hover:text-[#635bff] p-1 px-4 rounded-3xl transition-colors duration-300";
 
-        if (url.pathname === menuItem.url) {
+        if (activePage === menuItem.key) {
           classes +=
             " underline text-[#635bff] underline-offset-4 font-semibold";
         }
