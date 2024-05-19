@@ -10,5 +10,5 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   integrations: [react(), markdoc(), keystatic(), tailwind()],
   output: "hybrid",
-  adapter: vercel()
+  adapter: vercel(),
 });
