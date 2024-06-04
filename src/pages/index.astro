@@ -2,62 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ClickableLink from "../components/ClickableLink.astro";
 import ToolboxItem from "../components/ToolboxItem";
-import WritingItem from "../components/WritingItem.astro";
-
-interface BlogPost {
-  url: string;
-  title: string;
-  subtitle: string;
-  coverImage: {
-    url: string;
-  };
-  readTimeInMinutes: number;
-  views: number;
-}
-
-interface BlogPostResponse {
-  publication: {
-    posts: {
-      edges: {
-        node: BlogPost;
-      }[];
-    };
-  };
-}
-
-const response = await fetch("https://gql.hashnode.com", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    query: `
-      query {
-        publication(host: "indentasi.dhsrlab.com") {
-          posts(first: 5) {
-            edges {
-              node {
-                url
-                title
-                subtitle
-                coverImage {
-                  url
-                }
-                readTimeInMinutes
-                views
-              }
-            }
-          }
-        }
-      }`,
-  }),
-});
-
-const postsResponse: { data: BlogPostResponse } = await response.json();
-
-const posts = postsResponse.data.publication.posts.edges.map(
-  (edge) => edge.node
-);
+import { ArticlesList } from "../components/ArticleList";
 
 type Tool = {
   image: string;
@@ -184,6 +129,8 @@ const tools: Tool[][] = [
     <section class="relative flex flex-col justify-center items-center px-5">
       <h2 id="about" class="text-3xl font-bold my-10">Latest Writings</h2>
 
+      <ArticlesList client:only />
+      <!-- 
       <div class="max-w-[720px] flex flex-col">
         <ul class="flex flex-col gap-3">
           {
@@ -208,7 +155,7 @@ const tools: Tool[][] = [
         >
           View all writings &rarr;
         </a>
-      </div>
+      </div> -->
     </section>
 
     <section>
