@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { getArticles } from "../services/articles";
+import { getArticles } from "@/services/articles";
 import { WritingItem } from "./WritingItem";
 
 const ArticlesList = () => {

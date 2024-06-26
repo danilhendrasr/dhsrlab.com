@@ -1,10 +1,6 @@
-type Props = {
-  image: string;
-  url: string;
-  name: string;
-  inProgress?: boolean;
-  main?: boolean;
-};
+"use client";
+
+import { usePathname } from "next/navigation";
 
 const menus = [
   {
@@ -23,24 +19,24 @@ const menus = [
   },
 ];
 
-const Navbar: React.FC<Props> = (props) => {
-  const pathname = window.location.pathname;
+const Navbar: React.FC = () => {
+  const pathname = usePathname();
 
   return (
     <nav className="fixed left-1/2 top-5 -translate-x-1/2 border py-2 px-5 border-[#ddddda] rounded-3xl bg-[#fdfdfc] hover:border-slate-500 transition-all hover:shadow-md backdrop-filter backdrop-blur-lg bg-opacity-30 z-50">
       <ul className="flex gap-2 items-center text-sm">
-        {menus.map((menuItem, idx) => {
+        {menus.map((item, idx) => {
           let classes =
             "hover:text-[#635bff] p-1 px-4 rounded-3xl transition-colors duration-300";
 
-          if (pathname === menuItem.key) {
+          if (pathname === item.key) {
             classes +=
               " underline text-[#635bff] underline-offset-4 font-semibold";
           }
 
           return (
             <li className={classes} key={idx}>
-              <a href={menuItem.url}>{menuItem.name}</a>
+              <a href={item.url}>{item.name}</a>
             </li>
           );
         })}
