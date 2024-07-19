@@ -40,16 +40,16 @@ export default function Home() {
         <div className="absolute top-1/2 lg:left-16 xl:left-32 -translate-y-1/2 leading-7 px-10">
           <h1 className="text-5xl font-bold">Danil Hendra Suryawan</h1>
           <p className="font-light my-2">
-            Full-stack engineer at{" "}
-            <ClickableLink link="https://selarastech.com">
-              Selarastech
+            Software engineer @{" "}
+            <ClickableLink link="https://speechify.com">
+              Speechify
             </ClickableLink>
           </p>
 
           <p className="font-light my-5 text-[#425466]">
             I work with end-to-end web technologies and stuff. Creating and
             <br />
-            solving problems using React, TypeScript, Go, and MySQL.
+            solving problems using TypeScript, Go, and Rust.
           </p>
 
           <p className="font-light text-[#425466] mb-2">
@@ -76,13 +76,6 @@ export default function Home() {
               className="inline-block hover:bg-slate-200 w-fit transition-colors duration-300 p-2 rounded-md"
             >
               <img src="/linkedin.svg" className="w-5" />
-            </a>
-            <a
-              target="_blank"
-              href="https://twitter.com/danilhendrasr"
-              className="inline-block hover:bg-slate-200 w-fit transition-colors duration-300 p-2 rounded-md"
-            >
-              <img src="/x.svg" className="w-5" />
             </a>
             <a
               target="_blank"
